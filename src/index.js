@@ -40,16 +40,13 @@ const ui = () => {
 
     ul.appendChild(li);
 
-    li.addEventListener('mouseover', ()=>{
+    li.addEventListener('mouseover', () => {
       rDiv.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    });
 
-    })
-
-    li.addEventListener('mouseout', ()=>{
+    li.addEventListener('mouseout', () => {
       rDiv.innerHTML = '<i class="fas fa-bars"></i>';
-    })
-
-    
+    });
 
     pTask.addEventListener('click', () => {
       editTasks(pTask, tasks[i]);
