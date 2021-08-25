@@ -131,12 +131,11 @@ const deleteTask = (listId) => {
 const deleteAllCompleted = () => {
   const uncompleted = [];
   for (let i = 0; i < tasks.length; i += 1) {
-    if (task.completed === false) {
-      uncompleted.push(task);
+    if (tasks[i].completed === false) {
+      uncompleted.push(tasks[i]);
     }
   }
   localStorage.setItem('lstore', JSON.stringify(uncompleted));
-  getFromLocalStorage();
   window.location.reload();
 };
 
