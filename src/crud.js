@@ -4,8 +4,6 @@ const ul = document.querySelector('ul');
 const taskDescription = document.querySelector('#txt-input');
 const deleteAllBtn = document.querySelector('.clear-all');
 
-
-
 const getFromLocalStorage = () => {
   const storage = JSON.parse(localStorage.getItem('lstore')) || [];
   return storage;
@@ -18,6 +16,26 @@ const addToLocalStorage = () => {
   localStorage.setItem('lstore', storage);
 };
 
+const editTasks = (editable, task) => {
+  editable.contentEditable = true;
+
+  if (editable === document.activeElement) {
+    editable.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        task.description = editable.textContent;
+        addToLocalStorage();
+        editable.contentEditable = false;
+      }
+    });
+  }
+};
+
+const deleteTask = (listId) => {
+  const index = listId;
+  tasks.splice(index, 1);
+  addToLocalStorage();
+  listId.remove();
+};
 
 const createUi = (task) => {
   const li = document.createElement('li');
@@ -101,31 +119,9 @@ const addToTasks = (e) => {
   };
   tasks.push(item);
   createUi(item);
- 
 
   addToLocalStorage();
   taskDescription.value = '';
-};
-
-const editTasks = (editable, task) => {
-  editable.contentEditable = true;
-
-  if (editable === document.activeElement) {
-    editable.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        task.description = editable.textContent;
-        addToLocalStorage();
-        editable.contentEditable = false;
-      }
-    });
-  }
-};
-
-const deleteTask = (listId) => {
-  const index = listId;
-  tasks.splice(index, 1);
-  addToLocalStorage();
-  listId.remove();
 };
 
 const deleteAllCompleted = () => {
