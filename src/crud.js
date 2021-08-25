@@ -4,6 +4,11 @@ const ul = document.querySelector('ul');
 const taskDescription = document.querySelector('#txt-input');
 const deleteAllBtn = document.querySelector('.clear-all');
 
+const addToLocalStorage = () => {
+  const storage = JSON.stringify(tasks);
+  localStorage.setItem('lstore', storage);
+};
+
 const getFromLocalStorage = () => {
   const storage = JSON.parse(localStorage.getItem('lstore')) || [];
   return storage;
@@ -78,11 +83,13 @@ const createUi = (task) => {
 
 };
 
+const ui = () => {
+  getFromLocalStorage().forEach((task) => {
+    createUi(task)
+  })
+}
 
-const addToLocalStorage = () => {
-  const storage = JSON.stringify(tasks);
-  localStorage.setItem('lstore', storage);
-};
+ui();
 
 const addToTasks = (e) => {
   e.preventDefault();
@@ -114,7 +121,7 @@ const editTasks = (editable, task) => {
 const deleteTask = (listId) => {
   const index = listId;
   tasks.splice(index, 1);
-  localStorage.setItem('lstore', JSON.stringify(tasks));
+  addToLocalStorage();
   window.location.reload();
 };
 
