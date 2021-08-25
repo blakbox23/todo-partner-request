@@ -84,7 +84,7 @@ const createUi = (task) => {
 };
 
 const ui = () => {
-  getFromLocalStorage().forEach((task) => {
+  tasks.forEach((task) => {
     createUi(task)
   })
 }
