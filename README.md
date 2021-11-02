@@ -11,6 +11,7 @@ This is a Todo list JavaScript project that allows users to add tasks they'd lik
 Prerequisites
  -  Node.js
  -  NPM
+ -  Webpack
 
 ## Setup
 
@@ -29,6 +30,7 @@ To use the application run.
 `npm run start`
 
 👤 **Author**
+### Peter Mbuthia
 
 - GitHub: [@Blakbox23](https://github.com/blakbox23)
 - Twitter: [@blakbox23](https://twitter.com/blakbox23)
